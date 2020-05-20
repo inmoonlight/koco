@@ -1,10 +1,9 @@
 import logging
+import importlib
 import requests
 
 from .patch import download_dataset
-from .utils import DOWNLOAD_DIR, exist_dataset
-from .korean_hate_speech import load as khs_loader
-
+from .utils import dataset_to_module_name, DOWNLOAD_DIR, exist_dataset
 
 KOCOHUB = 'https://api.github.com/orgs/kocohub/repos'
 
@@ -62,5 +61,7 @@ def patch_dataset(dataset, verbose=True):
 def load_dataset(dataset, mode, verbose=True):
     patch_dataset(dataset, verbose)
 
-    if dataset == 'korean-hate-speech':
-        return khs_loader(mode)
+    # NOTE: module name should be same with dataset name
+    module_name = dataset_to_module_name(dataset)
+    loader = importlib.import_module(f'koco.{module_name}').load
+    return loader(mode)

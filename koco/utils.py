@@ -3,6 +3,10 @@ import os
 DOWNLOAD_DIR = f'{os.path.expanduser("~")}/.kocohub'
 
 
+def dataset_to_module_name(dataset):
+    return dataset.replace('-', '_')
+
+
 def exist_dataset(dataset):
     return os.path.exists(f'{DOWNLOAD_DIR}/{dataset}-master')
 
