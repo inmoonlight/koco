@@ -4,15 +4,48 @@
 `kocohub` contains **KO**rean **CO**rpus for natural language processing.
 
 ## Installation
+> NOTE: The code is tested on `Python 3.6.9`
 
+#### from pypi
 ```
-# from pypi
 pip install koco
+```
 
-# from source
+#### from source
+```
 git clone https://github.com/inmoonlight/koco
 cd koco
 pip install .
 ```
 
 ## Usage
+Using `koco` is similar to [`nlp`](https://github.com/huggingface/nlp). The main methods are:
+- `koco.list_datasets()`: list all available datasets in [`kocohub`](https://github.com/kocohub)
+- `koco.load_dataset(dataset_name, mode)`: load dataset in [`kocohub`](https://github.com/kocohub) with data-specific mode
+
+#### example
+```python
+>>> import koco
+
+>>> koco.list_datasets()
+['korean-hate-speech', 'sae4k']
+
+>>> dataset = koco.load_dataset('korean-hate-speech', mode='labeled')
+>>> type(dataset)
+dict
+>>> dataset.keys()
+dict_keys(['train', 'dev'])
+>>> dataset['train'][33]
+{'comments': '2,30대 골빈여자들은 이 기사에 다 모이는건가ㅋㅋㅋㅋ 이래서 여자는 투표권 주면 안된다. 엠넷사전투표나 하고 살아야지 계집들은',
+ 'contain_gender_bias': True,
+ 'bias': 'gender',
+ 'hate': 'hate',
+ 'news_title': '"“8년째 연애 중”…‘인생술집’ 블락비 유권♥전선혜, 4살차 연상연하 커플"'}
+ 
+ >>> testset = koco.load_dataset('korean-hate-speech', mode='testset')
+ >>> type(testset)
+ list
+ >>> testset[33]
+ {'comments': '끝낼때도 됐지 요즘같은 분위기엔 성드립 잘못쳤다가 난리. 그동안 잘봤습니다',
+ 'news_title': '[단독] ‘SNL 코리아’ 공식적인 폐지 확정…아름다운 종료'}
+```
