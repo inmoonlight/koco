@@ -17,7 +17,7 @@ dataset = 'korean-hate-speech'
 datadir = f'{DOWNLOAD_DIR}/{dataset}-master'
 
 
-def _load_labeled():
+def _load_train_dev():
     """Load labeled train, dev set
 
     Returns:
@@ -32,8 +32,7 @@ def _load_labeled():
                                   'news_title': str,
                              },
                              ...
-                         ]
-
+                         ],
                 'dev': [
                            {
                                 'comments': str,
@@ -71,7 +70,8 @@ def _load_unlabeled():
                 {
                     'comments': str,
                     'news_title': str,
-                }, ...
+                },
+                ...
             ]
     """
     unlabeled_comments = []
@@ -91,7 +91,7 @@ def _load_unlabeled():
     return unlabeled_dataset
 
 
-def _load_testset():
+def _load_test():
     """Load testset
 
     Note that testset doesn't contain any labels
@@ -102,7 +102,8 @@ def _load_testset():
                 {
                     'comments': str,
                     'news_title': str,
-                }, ...
+                },
+                ...
             ]
     """
     test = pd.read_csv(f'{datadir}/test.no_label.tsv', sep='\t')
@@ -114,9 +115,9 @@ def _load_testset():
 
 
 AVAILABLE_MODE = {
-    'labeled': _load_labeled,
+    'train_dev': _load_train_dev,
     'unlabeled': _load_unlabeled,
-    'testset': _load_testset
+    'test': _load_test
 }
 
 
@@ -124,7 +125,7 @@ def load(mode):
     """Load korean-hate-speech dataset
 
     Args:
-        mode (str): Either labeled, unlabeld, or testset
+        mode (str): Either train_dev, unlabeld, or test
     """
     if mode not in AVAILABLE_MODE:
         raise ValueError(f'Invalid mode. Try one of {AVAILABLE_MODE.keys()}')

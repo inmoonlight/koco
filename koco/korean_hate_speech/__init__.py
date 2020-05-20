@@ -1,1 +1,1 @@
-from .korean_hate_speech import load  # noqa: F401
+from .korean_hate_speech import AVAILABLE_MODE, load  # noqa: F401

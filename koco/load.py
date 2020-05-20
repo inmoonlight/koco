@@ -13,12 +13,26 @@ logger = logging.getLogger(__name__)
 
 def list_datasets():
     """List datasets in kocohub
+
+    Returns:
+        dataset (dict): dataset name and its available mode
+            {
+                'korean-hate-speech': ['labeled', 'unlabeled', 'testset'],
+                ...
+            }
     """
     success = False
     while not success:
-        r = requests.get(KOCOHUB, params={'per_page': '500'})
+        r = requests.get(KOCOHUB, params={'per_page': '500'})  # TODO: if dataset > 500, then fix
         success = r.ok
-    return [info['name'] for info in r.json()]
+    dataset_names = [info['name'] for info in r.json()]
+
+    dataset = dict()
+    for d_name in dataset_names:
+        module_name = dataset_to_module_name(d_name)
+        modes = importlib.import_module(f'koco.{module_name}').AVAILABLE_MODE
+        dataset[d_name] = list(modes.keys())
+    return dataset
 
 
 def is_valid_dataset(dataset):
