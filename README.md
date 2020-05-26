@@ -50,3 +50,8 @@ dict_keys(['train', 'dev'])
  {'comments': '끝낼때도 됐지 요즘같은 분위기엔 성드립 잘못쳤다가 난리. 그동안 잘봤습니다',
  'news_title': '[단독] ‘SNL 코리아’ 공식적인 폐지 확정…아름다운 종료'}
 ```
+
+## Contributing to `kocohub` / `koco`
+
+All Korean datasets with their publications or detailed documentations, bug reports, bug fixes, enhancements and ideas are welcome :tada: <br>
+Feel free to ask questions via [`issues`](https://github.com/inmoonlight/koco/issues). I recommend to use adequate `label`!
