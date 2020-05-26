@@ -54,4 +54,4 @@ dict_keys(['train', 'dev'])
 ## Contributing to kocohub / koco
 
 All Korean datasets with their publications or detailed documentations, bug reports, bug fixes, enhancements and ideas are welcome :tada: <br>
-Feel free to ask questions via [`issues`](https://github.com/inmoonlight/koco/issues). I recommend to use adequate `label`!
+Feel free to ask questions via [`issues`](https://github.com/inmoonlight/koco/issues). I recommend to use an adequate `label`!
