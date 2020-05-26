@@ -51,7 +51,7 @@ dict_keys(['train', 'dev'])
  'news_title': '[단독] ‘SNL 코리아’ 공식적인 폐지 확정…아름다운 종료'}
 ```
 
-## Contributing to `kocohub` / `koco`
+## Contributing to kocohub / koco
 
 All Korean datasets with their publications or detailed documentations, bug reports, bug fixes, enhancements and ideas are welcome :tada: <br>
 Feel free to ask questions via [`issues`](https://github.com/inmoonlight/koco/issues). I recommend to use adequate `label`!
