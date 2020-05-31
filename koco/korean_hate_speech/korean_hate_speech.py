@@ -76,7 +76,7 @@ def _load_unlabeled():
     """
     unlabeled_comments = []
     unlabeled_news_titles = []
-    for i in range(5):
+    for i in range(1, 6):
         unlabeled_comments_tmp = read_lines(f'{datadir}/unlabeled/unlabeled_comments_{i}.txt')
         unlabeled_comments.extend(unlabeled_comments_tmp)
         unlabeled_news_title_tmp = read_lines(f'{datadir}/news_title/unlabeled_comments.news_title_{i}.txt')
